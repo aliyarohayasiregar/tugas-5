@@ -3,7 +3,7 @@ import pkg from "pg";
 const { Client } = pkg;
 
 export const client = new Client({
-  host: "db.vsvbepwqwqngfwvwsvha.supabase.co",
+  host: "db.hcrvgjfythahcmgkcrge.supabase.co",
   // port: 5432,
   user: "postgres",
   password: "iwanhanafiah",

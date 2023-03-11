@@ -5,6 +5,8 @@ const app = express();
 
 // middleware
 
+app.use(express.static("public"));
+
 app.use((req, _res, next) => {
   if (req.url === "/bagas") {
     console.log("Bagas");
@@ -15,12 +17,13 @@ app.use((req, _res, next) => {
 
 // route
 
-app.get("/api/romi", (_req, res) => {
-  res.send("romi");
-});
-
 app.get("/api/mahasiswa", async (_req, res) => {
   const results = await client.query("SELECT * FROM mahasiswa");
+  res.send(results.rows);
+});
+
+app.get("/api/pelatihan", async (_req, res) => {
+  const results = await client.query("SELECT * FROM pelatihan");
   res.send(results.rows);
 });
 
