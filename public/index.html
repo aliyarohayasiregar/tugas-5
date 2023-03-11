@@ -26,7 +26,7 @@
       <tbody></tbody>
     </table>
     <script>
-      fetch("http://localhost:3000/api/mahasiswa")
+      fetch("/api/mahasiswa")
         .then((response) => response.json())
         .then((mahasiswa) => {
           const tbody = document.querySelector("tbody");
