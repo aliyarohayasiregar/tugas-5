@@ -1,10 +1,10 @@
 {
-  "name": "jarvis",
+  "name": "nodesquad",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon api"
+    "dev": "node --watch api"
   },
   "keywords": [],
   "author": "",
