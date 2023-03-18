@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import { client } from "./db.js";
 
@@ -21,7 +24,7 @@ app.post("/api/token", async (req, res) => {
           id: 1,
           nama: "Romi",
         },
-        "iwanhanafiah"
+        process.env.JWT_SECRET_KEY
       );
       res.send(token);
     } else {
