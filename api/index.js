@@ -1,7 +1,38 @@
 import express from "express";
 import { client } from "./db.js";
 
+import jwt from "jsonwebtoken";
+
 const app = express();
+
+app.use(express.json());
+
+// ROUTE TANPA TOKEN
+
+// dapatkan token
+app.post("/api/token", async (req, res) => {
+  const results = await client.query(
+    `SELECT * FROM mahasiswa WHERE nim = '${req.body.nim}'`
+  );
+  if (results.rows.length > 0) {
+    if (req.body.password === results.rows[0].password) {
+      const token = jwt.sign(
+        {
+          id: 1,
+          nama: "Romi",
+        },
+        "iwanhanafiah"
+      );
+      res.send(token);
+    } else {
+      res.status(401);
+      res.send("Kata sandi salah.");
+    }
+  } else {
+    res.status(401);
+    res.send("Mahasiswa tidak ditemukan.");
+  }
+});
 
 // MIDDLEWARE
 
@@ -14,7 +45,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.json());
 app.use(express.static("public"));
 
 // ROUTE MAHASISWA
