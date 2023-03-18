@@ -24,7 +24,7 @@ app.post("/api/token", async (req, res) => {
           id: 1,
           nama: "Romi",
         },
-        process.env.JWT_SECRET_KEY
+        process.env.SECRET_KEY
       );
       res.send(token);
     } else {

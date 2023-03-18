@@ -1,14 +1,18 @@
 {
   "name": "nodesquad",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project pelatihan Node.js Squad",
   "main": "api/index.js",
   "scripts": {
     "dev": "nodemon api"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "express",
+    "postgres",
+    "jwt"
+  ],
+  "author": "Romi Kusuma Bakti <romikusumab@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
