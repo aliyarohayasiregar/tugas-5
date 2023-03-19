@@ -55,7 +55,7 @@ app.use(express.static("public"));
 // tampilkan semua
 app.get("/api/mahasiswa", async (_req, res) => {
   const results = await client.query("SELECT * FROM mahasiswa");
-  res.send(results.rows);
+  res.json(results.rows);
 });
 
 // tampilkan satu
@@ -63,7 +63,7 @@ app.get("/api/mahasiswa/:id", async (req, res) => {
   const results = await client.query(
     `SELECT * FROM mahasiswa WHERE id = ${req.params.id}`
   );
-  res.send(results.rows[0]);
+  res.json(results.rows[0]);
 });
 
 // tambah
@@ -92,7 +92,7 @@ app.delete("/api/mahasiswa/:id", async (req, res) => {
 
 app.get("/api/pelatihan", async (_req, res) => {
   const results = await client.query("SELECT * FROM pelatihan");
-  res.send(results.rows);
+  res.json(results.rows);
 });
 
 app.listen(3000, () => {
