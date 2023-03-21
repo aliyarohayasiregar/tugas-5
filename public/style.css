@@ -1,0 +1,14 @@
+th,
+td {
+  border: 1px solid;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
