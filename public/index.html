@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NodeSquad</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    <h1>Welcome to NodeSquad!</h1>
+    <h1>Selamat datang <span></span>!</h1>
     <table>
       <thead>
         <th>NIM</th>
@@ -17,6 +17,12 @@
       <tbody></tbody>
     </table>
     <script>
+      const nama = document.querySelector("span");
+
+      fetch("/api/me")
+        .then((response) => response.json())
+        .then((mahasiswa) => (nama.textContent = mahasiswa.nama));
+
       fetch("/api/mahasiswa")
         .then((response) => response.json())
         .then((mahasiswa) => {
