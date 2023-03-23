@@ -1,0 +1,26 @@
+th,
+td {
+  border: 1px solid;
+  padding: 20px;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+.kel{
+  padding: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+ }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 199px;
+  padding-top: 68px;
+  padding-bottom: 83px;
+    border: 1px solid;
+    background-color: rgb(167, 202, 202);
+}
+

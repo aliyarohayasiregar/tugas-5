@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NodeSquad</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    <h1>Welcome to NodeSquad!</h1>
+    <h1>Selamat datang <span></span>!</h1>
+    <form action="" name="keluar" class="kel">
+      <button>Keluar</button>
+    </form>
+
     <table>
       <thead>
         <th>NIM</th>
@@ -16,7 +20,14 @@
       </thead>
       <tbody></tbody>
     </table>
+
     <script>
+      const nama = document.querySelector("span");
+
+      fetch("/api/me")
+        .then((response) => response.json())
+        .then((mahasiswa) => (nama.textContent = mahasiswa.nama));
+
       fetch("/api/mahasiswa")
         .then((response) => response.json())
         .then((mahasiswa) => {
@@ -35,6 +46,22 @@
             tbody.appendChild(tr);
           });
         });
+
+        document.keluar.onsubmit = async  (e) => {
+        e.preventDefault();
+        await  fetch("/api/keluar",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            token:"token"
+          })
+        });
+        location.href = "/";
+      }
+
+        
     </script>
   </body>
 </html>
