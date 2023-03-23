@@ -6,11 +6,42 @@ import { client } from "./db.js";
 
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
+import bcriptjs from "dcryptjs"
 
 const app = express();
 
+// middleware untuk membaca body berformat JSON
 app.use(express.json());
+
+// middleware untuk mengelola cookie
 app.use(cookieParser());
+app.use(bcriptjs());
+// cara meng-hash
+const salt = await bcrypt.genSalt(10);
+const hash = await bcrypt.hash("romiganz123", salt);
+console.log(hash);
+// middleware untuk mengalihkan ke halaman login
+app.use((req, res, next) => {
+  if (req.path.startsWith("/assets") || req.path.startsWith("/api")) {
+    next();
+  } else {
+    if (req.cookies.token) {
+      if (req.path.startsWith("/login")) {
+        res.redirect("/");
+      } else {
+        next();
+      }
+    } else {
+      if (req.path.startsWith("/login")) {
+        next();
+      } else {
+        res.redirect("/login");
+      }
+    }
+  }
+});
+
+// middleware untuk mengakses file statis
 app.use(express.static("public"));
 
 // ROUTE TANPA TOKEN
@@ -35,8 +66,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// MIDDLEWARE
-
+// middleware untuk mengotentikasi pengguna
 app.use((req, res, next) => {
   if (req.cookies.token) {
     try {

@@ -15,10 +15,14 @@
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.6",
+    "dcryptjs": "^1.0.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
 }
